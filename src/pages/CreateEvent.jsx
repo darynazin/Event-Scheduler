@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function CreateEvent() {
-  const [img, setImg] = useState('');
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [date, setDate] = useState('');
+  const [img, setImg] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [date, setDate] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const event = { img, title, description, date };
 
-    const existingEvents = JSON.parse(localStorage.getItem('events')) || [];
+    const existingEvents = JSON.parse(localStorage.getItem("events")) || [];
 
     const updatedEvents = [...existingEvents, event];
 
-    localStorage.setItem('events', JSON.stringify(updatedEvents));
-    navigate('/');
+    localStorage.setItem("events", JSON.stringify(updatedEvents));
+    navigate("/");
   };
 
   return (
@@ -63,7 +63,10 @@ function CreateEvent() {
             required
           />
         </div>
-        <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded">
+        <button
+          type="submit"
+          className="px-4 py-2 bg-blue-500 text-white rounded"
+        >
           Create Event
         </button>
       </form>
