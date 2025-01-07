@@ -5,6 +5,8 @@ import EventDetails from './pages/EventDetails';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import CreateEvent from './pages/CreateEvent';
+import ProtectedLayout from './components/ProtectedLayout';
+
 
 function App() {
   return (
@@ -14,7 +16,10 @@ function App() {
         <Route path="/event/:id" element={<EventDetails />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/create-event" element={<CreateEvent />} />
+        <Route path="/create-event" element={
+          <ProtectedLayout>
+              <CreateEvent />
+            </ProtectedLayout>} />
       </Routes>
     </Router>
   );

@@ -24,7 +24,7 @@ function CreateEvent() {
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-4">Create Event</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
+        <div>
           <label className="block text-sm font-medium">Image URL</label>
           <input
             type="text"
