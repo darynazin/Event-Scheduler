@@ -10,9 +10,18 @@ function CreateEvent() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const event = { img, title, description, date };
+    let id;
 
     const existingEvents = JSON.parse(localStorage.getItem("events")) || [];
+
+    if (existingEvents.length === 0) {
+      id = 1;
+    } else {
+      const maxId = Math.max(...existingEvents.map((item) => item.id));
+      id = maxId + 1;
+    }
+
+    const event = { id, img, title, description, date };
 
     const updatedEvents = [...existingEvents, event];
 
