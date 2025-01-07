@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function CreateEvent() {
+  const [img, setImg] = useState('');
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
@@ -9,7 +10,7 @@ function CreateEvent() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const event = { title, description, date };
+    const event = { img, title, description, date };
 
     const existingEvents = JSON.parse(localStorage.getItem('events')) || [];
 
@@ -23,6 +24,16 @@ function CreateEvent() {
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-4">Create Event</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
+      <div>
+          <label className="block text-sm font-medium">Image URL</label>
+          <input
+            type="text"
+            value={img}
+            onChange={(e) => setImg(e.target.value)}
+            className="mt-1 p-2 block w-full border rounded"
+            required
+          />
+        </div>
         <div>
           <label className="block text-sm font-medium">Title</label>
           <input
