@@ -6,6 +6,7 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import CreateEvent from "./pages/CreateEvent";
 import ProtectedLayout from "./components/ProtectedLayout";
+import EditEvent from "./pages/EditEvent";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/event/:id" element={<EventDetails />} />
+        <Route path="/edit-event/:id" element={<EditEvent />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route
