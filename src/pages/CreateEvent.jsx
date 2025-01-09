@@ -26,7 +26,7 @@ function CreateEvent() {
     const updatedEvents = [...existingEvents, event];
 
     localStorage.setItem("events", JSON.stringify(updatedEvents));
-    navigate("/");
+    navigate("/home");
   };
 
   return (

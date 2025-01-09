@@ -17,7 +17,7 @@ function EventDetails() {
     if (isConfirmed) {
       const updatedEvents = events.filter((e) => e.id !== parseInt(id, 10));
       localStorage.setItem("events", JSON.stringify(updatedEvents));
-      navigate("/");
+      navigate("/home");
     }
   };
 

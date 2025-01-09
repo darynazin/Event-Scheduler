@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+  let navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,19 +14,8 @@ const SignIn = () => {
       setError("Please fill in both fields.");
       return;
     }
-
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const user = users.find(
-      (user) => user.email === email && user.password === password
-    );
-
-    if (user) {
-      localStorage.setItem("loggedInUser", email);
-      console.log("Logged in with:", email);
-      navigate("/");
-    } else {
-      setError("Invalid credentials.");
-    }
+    console.log("Signed in with:", email, password);
+    navigate("/home");
   };
 
   return (
