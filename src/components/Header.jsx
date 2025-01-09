@@ -3,8 +3,11 @@ import { useNavigate } from "react-router";
 function Header() {
   let navigate = useNavigate();
   return (
-    <header className="flex justify-between items-center px-8 py-4 bg-gray-900 w-full">
-      <h1 className="text-5xl font-great-vibes text-white">Event Scheduler</h1>
+    <header className="flex justify-between items-center px-8 py-4 bg-gray-900 w-full cursor-pointer">
+      <h1 onClick={() => {
+          navigate("/home");
+        }} 
+        className="text-5xl font-great-vibes text-white">Event Scheduler</h1>
       <button onClick={() => {
           navigate("/create-event");
         }} 
