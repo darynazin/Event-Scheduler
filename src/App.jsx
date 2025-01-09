@@ -7,26 +7,32 @@ import SignIn from "./pages/SignIn";
 import CreateEvent from "./pages/CreateEvent";
 import ProtectedLayout from "./components/ProtectedLayout";
 import EditEvent from "./pages/EditEvent";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/event/:id" element={<EventDetails />} />
-        <Route path="/edit-event/:id" element={<EditEvent />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route
-          path="/create-event"
-          element={
-            <ProtectedLayout>
-              <CreateEvent />
-            </ProtectedLayout>
-          }
-        />
-      </Routes>
-    </Router>
+    <div>
+      <Header />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/event/:id" element={<EventDetails />} />
+          <Route path="/edit-event/:id" element={<EditEvent />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route
+            path="/create-event"
+            element={
+              <ProtectedLayout>
+                <CreateEvent />
+              </ProtectedLayout>
+            }
+          />
+        </Routes>
+      </Router>
+      <Footer />
+    </div>
   );
 }
 
