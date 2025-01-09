@@ -19,7 +19,6 @@ function Home() {
             </figure>
             <div className="card-body">
               <h2 className="card-title">{event.title}</h2>
-              <p>{event.description}</p>
               <p>{event.date}</p>
             </div>
           </Link>
