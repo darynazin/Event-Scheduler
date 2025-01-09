@@ -1,30 +1,39 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function CreateEvent() {
-  const [img, setImg] = useState('');
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [date, setDate] = useState('');
+  const [img, setImg] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [date, setDate] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const event = { img, title, description, date };
+    let id;
 
-    const existingEvents = JSON.parse(localStorage.getItem('events')) || [];
+    const existingEvents = JSON.parse(localStorage.getItem("events")) || [];
+
+    if (existingEvents.length === 0) {
+      id = 1;
+    } else {
+      const maxId = Math.max(...existingEvents.map((item) => item.id));
+      id = maxId + 1;
+    }
+
+    const event = { id, img, title, description, date };
 
     const updatedEvents = [...existingEvents, event];
 
-    localStorage.setItem('events', JSON.stringify(updatedEvents));
-    navigate('/');
+    localStorage.setItem("events", JSON.stringify(updatedEvents));
+    navigate("/");
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4">Create Event</h1>
+    <div className="container mx-auto p-4 w-1/3 mt-16">
+      <h1 className="text-3xl font-bold mb-4 text-center">Create Event</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
+        <div>
           <label className="block text-sm font-medium">Image URL</label>
           <input
             type="text"
@@ -63,9 +72,14 @@ function CreateEvent() {
             required
           />
         </div>
-        <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded">
-          Create Event
-        </button>
+        <div className="text-center">
+          <button
+            type="submit"
+            className="px-4 py-2 bg-blue-500 text-white rounded"
+          >
+            Create Event
+          </button>
+        </div>
       </form>
     </div>
   );
