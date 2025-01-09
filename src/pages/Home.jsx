@@ -1,10 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const events = JSON.parse(localStorage.getItem("events")) || [];
 
 function Home() {
+  const navigate = useNavigate();
+  const handleSignOut = () => {
+    localStorage.removeItem("authToken");
+    navigate("/signin");
+  };
+
   return (
     <div className="min-h-screen bg-gray-900 flex flex-row items-start py-10">
+      <div className="w-full flex justify-end mb-4">
+        <button
+          onClick={handleSignOut}
+          className="bg-red-500 text-white px-4 py-2 rounded-md shadow-md"
+        >
+          Sign Out
+        </button>
+      </div>
       {events.length === 0 ? (
         <p className="text-center text-gray-500">No entries found.</p>
       ) : (
