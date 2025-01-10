@@ -16,6 +16,7 @@ const SignIn = () => {
     }
 
     const users = JSON.parse(localStorage.getItem("users")) || [];
+
     const user = users.find(
       (user) => user.email === email && user.password === password
     );
@@ -23,6 +24,7 @@ const SignIn = () => {
     if (user) {
       localStorage.setItem("loggedInUser", email);
       console.log("Logged in with:", email);
+
       navigate("/home");
     } else {
       setError("Invalid credentials.");
@@ -68,6 +70,13 @@ const SignIn = () => {
             Sign In
           </button>
         </form>
+
+        <p className="text-center text-sm text-gray-500 mt-4">
+          Don't have an account?{" "}
+          <a href="/signup" className="text-blue-500 hover:text-blue-600">
+            Sign Up
+          </a>
+        </p>
       </div>
     </div>
   );

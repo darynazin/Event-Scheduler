@@ -22,10 +22,16 @@ const SignUp = () => {
     }
 
     const users = JSON.parse(localStorage.getItem("users")) || [];
+    const userExists = users.some((user) => user.email === email);
+    if (userExists) {
+      setError("User with this email already exists.");
+      return;
+    }
+
     users.push({ email, password });
     localStorage.setItem("users", JSON.stringify(users));
 
-    console.log("Signed up with:", email, password);
+    console.log("Signed up with:", email);
 
     navigate("/signin");
   };
