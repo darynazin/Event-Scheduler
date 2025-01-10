@@ -8,7 +8,7 @@ function ProtectedLayout({ children }) {
     const token = localStorage.getItem("token");
 
     // if (!token) {
-    //   navigate('/login');
+    //   navigate('/');
     // }
   }, [navigate]);
 

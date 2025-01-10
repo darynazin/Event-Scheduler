@@ -34,20 +34,14 @@ function App() {
   };
   return (
     <div>
-      <Header />
       <Router>
+        <Header />
         <Routes>
-          <Route
-            path="/"
-            element={<Home events={events} deleteEvent={deleteEvent} />}
-          />
-          <Route
-            path="/event/:id"
-            element={<EventDetails events={events} deleteEvent={deleteEvent} />}
-          />
+          <Route path="/home" element={<Home events={events} deleteEvent={deleteEvent} />} />
+          <Route path="/event/:id" element={<EventDetails events={events} deleteEvent={deleteEvent} />} />
           <Route path="/edit-event/:id" element={<EditEvent />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/signin" element={<SignIn />} />
+          <Route path="/" element={<SignIn />} />
           <Route
             path="/create-event"
             element={

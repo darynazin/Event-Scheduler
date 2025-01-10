@@ -16,7 +16,7 @@ function EventDetails({ events, deleteEvent }) {
     );
     if (isConfirmed) {
       deleteEvent(parseInt(id, 10));
-      navigate("/");
+      navigate("/home");
     }
   };
   const handleEdit = () => {

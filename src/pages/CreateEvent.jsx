@@ -28,7 +28,7 @@ function CreateEvent({ addEvent }) {
     localStorage.setItem("events", JSON.stringify(updatedEvents));
 
     addEvent(event);
-    navigate("/");
+    navigate("/home");
   };
 
   return (
