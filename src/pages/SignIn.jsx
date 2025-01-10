@@ -23,7 +23,7 @@ const SignIn = () => {
     if (user) {
       localStorage.setItem("loggedInUser", email);
       console.log("Logged in with:", email);
-      navigate("/");
+      navigate("/home");
     } else {
       setError("Invalid credentials.");
     }
