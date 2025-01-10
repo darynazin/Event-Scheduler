@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function CreateEvent() {
+function CreateEvent({ addEvent }) {
   const [img, setImg] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -26,6 +26,8 @@ function CreateEvent() {
     const updatedEvents = [...existingEvents, event];
 
     localStorage.setItem("events", JSON.stringify(updatedEvents));
+
+    addEvent(event);
     navigate("/home");
   };
 
