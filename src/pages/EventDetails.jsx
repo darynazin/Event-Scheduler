@@ -1,9 +1,9 @@
 import { useParams, useNavigate } from "react-router-dom";
 
-function EventDetails() {
+function EventDetails({ events, deleteEvent }) {
   const { id } = useParams();
   const navigate = useNavigate();
-  const events = JSON.parse(localStorage.getItem("events")) || [];
+
   const event = events.find((e) => e.id === parseInt(id, 10));
 
   if (!event) {
@@ -15,16 +15,13 @@ function EventDetails() {
       "Are you sure you want to delete this event?"
     );
     if (isConfirmed) {
-      const updatedEvents = events.filter((e) => e.id !== parseInt(id, 10));
-      localStorage.setItem("events", JSON.stringify(updatedEvents));
+      deleteEvent(parseInt(id, 10));
       navigate("/");
     }
   };
-
   const handleEdit = () => {
     navigate(`/edit-event/${id}`);
   };
-
   return (
     <div className="min-h-screen bg-gray-900 flex flex-col items-center py-10">
       <div className="card bg-base-300 w-1/2 shadow-xl mb-5">
