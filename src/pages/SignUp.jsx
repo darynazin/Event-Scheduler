@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,7 +21,13 @@ const SignUp = () => {
       return;
     }
 
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    users.push({ email, password });
+    localStorage.setItem("users", JSON.stringify(users));
+
     console.log("Signed up with:", email, password);
+
+    navigate("/signin");
   };
 
   return (
@@ -33,13 +41,8 @@ const SignUp = () => {
 
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label
-              className="block text-sm font-medium text-gray-700 mb-2"
-              htmlFor="email"
-            ></label>
             <input
               type="email"
-              id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full p-3 border border-gray-300 rounded-lg"
@@ -49,13 +52,8 @@ const SignUp = () => {
           </div>
 
           <div className="mb-4">
-            <label
-              className="block text-sm font-medium text-gray-700 mb-2"
-              htmlFor="password"
-            ></label>
             <input
               type="password"
-              id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full p-3 border border-gray-300 rounded-lg"
@@ -65,13 +63,8 @@ const SignUp = () => {
           </div>
 
           <div className="mb-6">
-            <label
-              className="block text-sm font-medium text-gray-700 mb-2"
-              htmlFor="confirmPassword"
-            ></label>
             <input
               type="password"
-              id="confirmPassword"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               className="w-full p-3 border border-gray-300 rounded-lg"
