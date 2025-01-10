@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,8 +14,21 @@ const SignIn = () => {
       setError("Please fill in both fields.");
       return;
     }
-    console.log("Signed in with:", email, password);
-    navigate("/home");
+
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+
+    const user = users.find(
+      (user) => user.email === email && user.password === password
+    );
+
+    if (user) {
+      localStorage.setItem("loggedInUser", email);
+      console.log("Logged in with:", email);
+
+      navigate("/home");
+    } else {
+      setError("Invalid credentials.");
+    }
   };
 
   return (
@@ -29,32 +42,22 @@ const SignIn = () => {
 
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label
-              className="block text-sm font-medium text-gray-700 mb-2"
-              htmlFor="email"
-            ></label>
             <input
               type="email"
-              id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-3 border border-gray-300 rounded-lg"
               placeholder="Enter your email"
               required
             />
           </div>
 
           <div className="mb-6">
-            <label
-              className="block text-sm font-medium text-gray-700 mb-2"
-              htmlFor="password"
-            ></label>
             <input
               type="password"
-              id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-3 border border-gray-300 rounded-lg"
               placeholder="Enter your password"
               required
             />
@@ -62,7 +65,7 @@ const SignIn = () => {
 
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full bg-blue-500 text-white p-3 rounded-lg"
           >
             Sign In
           </button>

@@ -1,6 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function Home({ events, deleteEvent }) {
+const events = JSON.parse(localStorage.getItem("events")) || [];
+
+function Home() {
+  const navigate = useNavigate();
+  const handleSignOut = () => {
+    localStorage.removeItem("authToken");
+    navigate("/signin");
+  };
+
   return (
     <div className="min-h-screen bg-gray-900 flex flex-row items-start py-10">
       {events.length === 0 ? (
