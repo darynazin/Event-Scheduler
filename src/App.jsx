@@ -33,9 +33,10 @@ function App() {
     localStorage.setItem("events", JSON.stringify(updatedEvents));
   };
   return (
-    <div>
+    <div className="flex flex-col min-h-screen min-w-[500px]">
       <Router>
         <Header />
+        <div className="flex-grow bg-gray-900">
         <Routes>
           <Route
             path="/"
@@ -57,6 +58,7 @@ function App() {
             }
           />
         </Routes>
+        </div>
       </Router>
       <Footer />
     </div>

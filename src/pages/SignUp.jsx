@@ -33,11 +33,11 @@ const SignUp = () => {
 
     console.log("Signed up with:", email);
 
-    navigate("/signin");
+    navigate("/");
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="flex justify-center mt-32">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
         <h2 className="text-2xl font-semibold text-center mb-6">
           Event Scheduler

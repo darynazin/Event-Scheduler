@@ -5,11 +5,11 @@ function ProtectedLayout({ children }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const loggedInUser = localStorage.getItem("loggedInUser");
 
-    // if (!token) {
-    //   navigate('/');
-    // }
+    if (!loggedInUser) {
+      navigate("/");
+    }
   }, [navigate]);
 
   return <div>{children}</div>;
