@@ -23,10 +23,11 @@ function EditEvent() {
 
   return (
     <div className="container mx-auto p-4 w-1/3 mt-16">
-      <h1 className="text-3xl font-bold mb-4 text-center">Edit Event</h1>
+      <h1 className="text-3xl font-bold mb-4 text-center text-white">Edit Event</h1>
+      
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-sm font-medium">Image URL</label>
+          <label className="block text-sm font-medium text-white">Image URL</label>
           <input
             type="text"
             value={img}
@@ -36,7 +37,7 @@ function EditEvent() {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium">Title</label>
+          <label className="block text-sm font-medium text-white">Title</label>
           <input
             type="text"
             value={title}
@@ -46,7 +47,7 @@ function EditEvent() {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium">Description</label>
+          <label className="block text-sm font-medium text-white">Description</label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -55,7 +56,7 @@ function EditEvent() {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium">Date</label>
+          <label className="block text-sm font-medium text-white">Date</label>
           <input
             type="date"
             value={date}
