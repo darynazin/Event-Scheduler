@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -73,9 +73,9 @@ const SignIn = () => {
 
         <p className="text-center text-sm text-gray-500 mt-4">
           Don't have an account?{" "}
-          <a href="/signup" className="text-blue-500 hover:text-blue-600">
+          <Link to="/signup" className="text-blue-500 hover:text-blue-600">
             Sign Up
-          </a>
+          </Link>
         </p>
       </div>
     </div>
