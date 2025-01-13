@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-function EditEvent() {
+function EditEvent({ events, setEvents }) {
   const { id } = useParams();
   const navigate = useNavigate();
-  const events = JSON.parse(localStorage.getItem("events")) || [];
   const event = events.find((e) => e.id === parseInt(id, 10));
 
   const [img, setImg] = useState(event?.img || "");
@@ -17,17 +16,22 @@ function EditEvent() {
     const updatedEvents = events.map((e) =>
       e.id === parseInt(id, 10) ? { ...e, img, title, description, date } : e
     );
+    setEvents(updatedEvents);
     localStorage.setItem("events", JSON.stringify(updatedEvents));
     navigate(`/event/${id}`);
   };
 
   return (
     <div className="container mx-auto p-4 w-1/3 mt-16">
-      <h1 className="text-3xl font-bold mb-4 text-center text-white">Edit Event</h1>
-      
+      <h1 className="text-3xl font-bold mb-4 text-center text-white">
+        Edit Event
+      </h1>
+
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-white">Image URL</label>
+          <label className="block text-sm font-medium text-white">
+            Image URL
+          </label>
           <input
             type="text"
             value={img}
@@ -47,7 +51,9 @@ function EditEvent() {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-white">Description</label>
+          <label className="block text-sm font-medium text-white">
+            Description
+          </label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}

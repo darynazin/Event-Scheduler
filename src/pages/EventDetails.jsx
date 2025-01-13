@@ -37,7 +37,7 @@ function EventDetails({ events, deleteEvent }) {
         >
           &times;
         </button>
-        
+
         <figure className="h-[30rem] w-full overflow-hidden">
           <img
             src={event.img}
