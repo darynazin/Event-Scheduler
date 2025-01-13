@@ -37,27 +37,32 @@ function App() {
       <Router>
         <Header />
         <div className="flex-grow bg-gray-900">
-        <Routes>
-          <Route
-            path="/"
-            element={<Home events={events} deleteEvent={deleteEvent} />}
-          />
-          <Route
-            path="/event/:id"
-            element={<EventDetails events={events} deleteEvent={deleteEvent} />}
-          />
-          <Route path="/edit-event/:id" element={<EditEvent />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/" element={<SignIn />} />
-          <Route
-            path="/create-event"
-            element={
-              <ProtectedLayout>
-                <CreateEvent addEvent={addEvent} />
-              </ProtectedLayout>
-            }
-          />
-        </Routes>
+          <Routes>
+            <Route
+              path="/home"
+              element={<Home events={events} deleteEvent={deleteEvent} />}
+            />
+            <Route
+              path="/event/:id"
+              element={
+                <EventDetails events={events} deleteEvent={deleteEvent} />
+              }
+            />
+            <Route
+              path="/edit-event/:id"
+              element={<EditEvent events={events} setEvents={setEvents} />}
+            />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/" element={<SignIn />} />
+            <Route
+              path="/create-event"
+              element={
+                <ProtectedLayout>
+                  <CreateEvent addEvent={addEvent} />
+                </ProtectedLayout>
+              }
+            />
+          </Routes>
         </div>
       </Router>
       <Footer />
