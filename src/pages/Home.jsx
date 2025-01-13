@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Home() {
   const events = JSON.parse(localStorage.getItem("events")) || [];
@@ -12,10 +12,14 @@ function Home() {
           <Link
             key={event.id}
             to={`/event/${event.id}`}
-            className="card bg-base-300 basis-[calc(25%-1.25rem)] min-w-[400px] sm:min-w-[250px] max-w-[400px] shadow-xl self-center"
+            className="card bg-base-300 basis-[calc(30%-1.25rem)] min-w-[400px] sm:min-w-[250px] max-w-[500px] shadow-xl self-center"
           >
             <figure className="overflow-hidden">
-              <img src={event.img} alt="Event" className="h-[200px] w-full object-cover" />
+              <img
+                src={event.img}
+                alt="Event"
+                className="h-[200px] w-full object-cover"
+              />
             </figure>
             <div className="card-body">
               <h2 className="card-title truncate">{event.title}</h2>
